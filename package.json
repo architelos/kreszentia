@@ -1,0 +1,23 @@
+{
+    "type": "commonjs",
+
+    "name": "kreszentia",
+    "version": "1.0.0",
+    "description": "A tiny and elegant BDD test suite for NodeJS.",
+    "main": "index.js",
+
+    "license": "MIT",
+    "author": "architelos <architelos#6702>",
+    "contributors": [],
+
+    "keywords": [
+        "test",
+        "framework",
+        "suite"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/architelos/criterion.git"
+    },
+    "homepage": "https://github.com/architelos/criterion#readme"
+}
