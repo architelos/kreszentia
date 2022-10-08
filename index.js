@@ -2,25 +2,14 @@
 
 const { readdirSync } = require("node:fs");
 
-let suites = [];
-let results = [];
+const suites = [];
+const results = [];
 let currentSuite = {
     tests: []
 };
 let lastSuite = "";
 let passes = 0;
 let fails = 0;
-
-const _reset = () => {
-    suites = [];
-    results = [];
-    currentSuite = {
-        tests: []
-    };
-    lastSuite = "";
-    passes = 0;
-    fails = 0;
-};
 
 const _runner = () => {
     const testFiles = readdirSync("./__tests__").filter((element) => element.match(/\.js$/g));
@@ -63,7 +52,6 @@ const _print = () => {
     }
 
     console.log(`\n\u001b[32;1m${passes}\u001b[0m tests passing, \u001b[31;1m${fails}\u001b[0m tests failing`);
-    _reset();
 };
 
 /**
@@ -100,7 +88,10 @@ const done = () => {
  * Run all suites.
  */
 const run = async () => {
-    for (const suite of suites) {
+    const length = suites.length;
+
+    for (let _ = 0; _ < length; _++) {
+        const suite = suites[0];
         let i = 0;
 
         while (i < suite.tests.length) {
@@ -131,6 +122,8 @@ const run = async () => {
             results.push(result);
             ++i;
         }
+
+        suites.splice(0, 1);
     }
 
     _print();
