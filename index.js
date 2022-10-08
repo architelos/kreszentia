@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-const { readdirSync, existsSync } = require("node:fs");
+const { readdirSync } = require("node:fs");
 
 const pad = "    ";
 const suites = [];
