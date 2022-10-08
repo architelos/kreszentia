@@ -104,9 +104,7 @@ const done = () => {
  * Run all suites.
  */
 const run = () => {
-    const length = suites.length;
-
-    for (let _ = 0; _ < length; _++) {
+    while (0 < suites.length) {
         const suite = suites[0];
         let i = 0;
 
@@ -122,7 +120,7 @@ const run = () => {
 
                 result.success = true;
             } catch (error) {
-                if (error.name.match(/assertion/gi)) {
+                if (error.name === "AssertionError") {
                     result.success = false;
                     result.error = "AssertionError";
                     result.errorMsg = error.message;
