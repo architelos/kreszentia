@@ -4,6 +4,13 @@
 
 <p align="center">Simple test framework for Node.js</p>
 
+<div align="center">
+
+![npm version](https://img.shields.io/npm/v/kreszentia.svg?style=flat-square)
+![npm downloads](https://img.shields.io/npm/dm/kreszentia?style=flat-square)
+
+</div>
+
 ## Contents
   - [Installing](#installing)
   - [Getting Started](#getting-started)
