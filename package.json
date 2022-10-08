@@ -20,7 +20,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/architelos/criterion.git"
+        "url": "git+https://github.com/architelos/kreszentia.git"
     },
-    "homepage": "https://github.com/architelos/criterion#readme"
+    "homepage": "https://github.com/architelos/kreszentia#readme"
 }
