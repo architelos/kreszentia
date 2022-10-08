@@ -3,14 +3,25 @@
 const { readdirSync } = require("node:fs");
 
 const pad = "    ";
-const suites = [];
-const results = [];
+let suites = [];
+let results = [];
 let currentSuite = {
     tests: []
 };
 let lastSuite = "";
 let passes = 0;
 let fails = 0;
+
+const _reset = () => {
+    suites = [];
+    results = [];
+    currentSuite = {
+        tests: []
+    };
+    lastSuite = "";
+    passes = 0;
+    fails = 0;
+};
 
 const _runner = () => {
     try {
@@ -56,7 +67,7 @@ const _print = () => {
         }
     }
 
-    console.log(`\n\u001b[32;1m${passes}\u001b[0m tests passing, \u001b[31;1m${fails}\u001b[0m tests failing`);
+    console.log(`\n\u001b[32;1m${passes}\u001b[0m tests passing, \u001b[31;1m${fails}\u001b[0m tests failing\n`);
 };
 
 /**
@@ -92,7 +103,7 @@ const done = () => {
 /**
  * Run all suites.
  */
-const run = async () => {
+const run = () => {
     const length = suites.length;
 
     for (let _ = 0; _ < length; _++) {
@@ -107,7 +118,7 @@ const run = async () => {
             };
 
             try {
-                await test();
+                test();
 
                 result.success = true;
             } catch (error) {
@@ -132,6 +143,7 @@ const run = async () => {
     }
 
     _print();
+    _reset();
 };
 
 globalThis.suite = suite;
