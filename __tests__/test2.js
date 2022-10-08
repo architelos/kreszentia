@@ -8,6 +8,8 @@ suite("multiplication", () => {
     add("multiply 2x2", () => {
         equal(2 * 2, 4);
     });
+
+    done();
 });
 
 run();
