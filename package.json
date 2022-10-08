@@ -1,5 +1,8 @@
 {
     "type": "commonjs",
+    "bin": {
+        "kreszentia": "index.js"
+    },
 
     "name": "kreszentia",
     "version": "1.0.0",
@@ -9,7 +12,7 @@
     "license": "MIT",
     "author": "architelos <architelos#6702>",
     "contributors": [],
-
+    
     "keywords": [
         "test",
         "framework",

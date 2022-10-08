@@ -1,7 +1,8 @@
 #! /usr/bin/env node
 
-const { readdirSync } = require("node:fs");
+const { readdirSync, existsSync } = require("node:fs");
 
+const pad = "    ";
 const suites = [];
 const results = [];
 let currentSuite = {
@@ -12,10 +13,14 @@ let passes = 0;
 let fails = 0;
 
 const _runner = () => {
-    const testFiles = readdirSync("./__tests__").filter((element) => element.match(/\.js$/g));
+    try {
+        const testFiles = readdirSync("./__tests__").filter((element) => element.match(/\.js$/g));
 
-    for (const testFile of testFiles) {
-        require(`./__tests__/${testFile}`);
+        for (const testFile of testFiles) {
+            require(`./__tests__/${testFile}`);
+        }
+    } catch {
+        console.log(`\u001b[31;1mNo __test__ directory found.\u001b[0m`);
     }
 };
 
@@ -28,7 +33,7 @@ const _print = () => {
         const testName = result.testName;
 
         if (result.success) {
-            console.log(`    \u001b[32;1m✓\u001b[0m - ${testName}`);
+            console.log(`${pad}\u001b[32;1m✓\u001b[0m - ${testName}`);
             ++passes;
 
             continue;
@@ -36,14 +41,14 @@ const _print = () => {
 
         switch (result.error) {
             case "AssertionError": {
-                console.log(`    \u001b[31;1m✕\u001b[0m - ${testName}: expected ${result.expected}, got ${result.actual}`);
+                console.log(`${pad}\u001b[31;1m✕\u001b[0m - ${testName}: expected ${result.expected}, got ${result.actual}`);
                 ++fails;
 
                 break;
             }
 
             default: {
-                console.log(`    \u001b[31;1m✕\u001b[0m - ${testName}: an error occurred (${result.errorMsg})`);
+                console.log(`${pad}\u001b[31;1m✕\u001b[0m - ${testName}: an error occurred (${result.errorMsg})`);
                 ++fails;
 
                 break;
@@ -64,7 +69,7 @@ const suite = (suiteName, callback) => {
 };
 
 /**
- * Adds a new test to the suite.
+ * Adds a test to the suite.
  */
 const add = (testName, test) => {
     currentSuite.tests.push({
