@@ -3,16 +3,13 @@
     "bin": {
         "kreszentia": "index.js"
     },
-
     "name": "kreszentia",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A tiny and elegant BDD test suite for NodeJS.",
     "main": "index.js",
-
     "license": "MIT",
     "author": "architelos <architelos#6702>",
     "contributors": [],
-    
     "keywords": [
         "test",
         "framework",
