@@ -64,6 +64,15 @@ addition:
 1 tests passing, 1 tests failing
 ```
 
+As of version 1.1.0. kreszentia also supports `require()`/`import`:
+```js
+const { suite, add, done, run } = require("kreszentia");
+```
+Or:
+```js
+import { suite, add, done, run } from "kreszentia";
+```
+
 ## API
 #### suite(suiteName, callback)
 Creates a new test suite.
