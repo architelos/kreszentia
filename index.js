@@ -1,7 +1,3 @@
-#! /usr/bin/env node
-
-const { readdirSync } = require("node:fs");
-
 const pad = "    ";
 let suites = [];
 let results = [];
@@ -11,6 +7,7 @@ let currentSuite = {
 let lastSuite = "";
 let passes = 0;
 let fails = 0;
+exports = module.exports;
 
 const _reset = () => {
     suites = [];
@@ -21,18 +18,6 @@ const _reset = () => {
     lastSuite = "";
     passes = 0;
     fails = 0;
-};
-
-const _runner = () => {
-    try {
-        const testFiles = readdirSync("./__tests__").filter((element) => element.match(/\.js$/g));
-
-        for (const testFile of testFiles) {
-            require(`./__tests__/${testFile}`);
-        }
-    } catch {
-        console.log(`\u001b[31;1mNo __test__ directory found.\u001b[0m`);
-    }
 };
 
 const _print = () => {
@@ -144,9 +129,7 @@ const run = () => {
     _reset();
 };
 
-globalThis.suite = suite;
-globalThis.add = add;
-globalThis.done = done;
-globalThis.run = run;
-
-_runner();
+exports.suite = suite;
+exports.add = add;
+exports.done = done;
+exports.run = run;
