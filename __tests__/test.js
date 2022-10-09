@@ -24,16 +24,4 @@ suite("subtraction", () => {
     done();
 });
 
-suite("division", () => {
-    add("div 1/1", () => {
-        equal(1 / 1, 1);
-    });
-
-    add("div 2/1", () => {
-        equal(2 / 1, 1);
-    });
-
-    done();
-});
-
 run();
